@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiConnectionsService } from 'src/app/shared/services/api-connections.service';
-import { ILeaderBoard } from 'src/app/models/modelsApi/ileader-board';
+import { ILeaderBoard } from 'src/app/models/ileader-board';
 import { Subscription } from 'rxjs';
 
 @Component({

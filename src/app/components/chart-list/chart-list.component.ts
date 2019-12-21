@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ILeaderBoard } from 'src/app/models/modelsApi/ileader-board';
+import { Component, Input } from '@angular/core';
+import { ILeaderBoard } from 'src/app/models/ileader-board';
 
 @Component({
   selector: 'app-chart-list',

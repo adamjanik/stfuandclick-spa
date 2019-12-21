@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { ILeaderBoard } from 'src/app/models/modelsApi/ileader-board';
+import { ILeaderBoard } from 'src/app/models/ileader-board';
 import { Observable } from 'rxjs';
-import { IClickRequest } from 'src/app/models/modelsApi/iclick-request';
-import { IClick } from 'src/app/models/modelsApi/iclick';
+import { IClickRequest } from 'src/app/models/iclick-request';
+import { IClick } from 'src/app/models/iclick';
 
 @Injectable({
   providedIn: 'root'
