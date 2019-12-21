@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #2196f3;
+
+body {
+    margin: 0;
+    font-size: 14px;
+    background: #eee;
+    color: #212121;
+    font-family: 'Roboto', sans-serif;
+
+    a {
+        color: #03a9f4;
+    }
+}

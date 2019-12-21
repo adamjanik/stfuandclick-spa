@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th></th>
+        <th>Team</th>
+        <th>Clicks</th>
+    </tr>
+    <tr *ngFor="let item of leaderBoard">
+        <td>{{ item.order }}</td>
+        <td>{{ item.team }}</td>
+        <td>{{ item.clicks }}</td>
+    </tr>
+  </table>
