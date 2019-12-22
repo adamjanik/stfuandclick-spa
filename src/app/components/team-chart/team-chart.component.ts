@@ -14,6 +14,7 @@ export class TeamChartComponent {
 
   constructor(private _router: Router) { }
 
+  /* open team detail */
   public openTeam(name: string): void {
     this._router.navigate(['/', encodeURIComponent(name)]);
   }

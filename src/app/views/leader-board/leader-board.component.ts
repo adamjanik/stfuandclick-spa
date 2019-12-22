@@ -10,6 +10,7 @@ import { GameService } from 'src/app/shared/services/game.service';
 export class LeaderBoardComponent {
   constructor(private _game: GameService) { }
 
+  /* get best 10 teams on leaderboard */
   public get top10Chart(): ILeaderBoard[] {
     return this._game.leaderBoard.getValue().slice(0, 10);
   }

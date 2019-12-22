@@ -29,6 +29,7 @@ export class TeamDetailComponent implements OnInit, OnDestroy {
     this._game.selectedTeam = null;
   }
 
+  /* get Array of LeaderBoard where is selected my team */
   public get myTeamChart(): ILeaderBoard[] {
     let startIndex: number = 0;
     let endIndex: number = 7;
@@ -42,10 +43,12 @@ export class TeamDetailComponent implements OnInit, OnDestroy {
     return this._game.leaderBoard.getValue().slice(startIndex, endIndex);
   }
 
+  /* get team name */
   public get teamName(): string {
     return this._game.selectedTeam;
   }
 
+  /* add click for team */
   public click(): void {
     this._game.addClick();
   }

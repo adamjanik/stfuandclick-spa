@@ -21,6 +21,7 @@ export class GameService {
     this.getClickStorage();
   }
 
+  /* get number of my clicks */
   public get myClicks(): number {
     if (!!this.myClicksStorage && this.myClicksStorage.length > 0) {
       const myClicksStorage: IClickStorage = this.myClicksStorage.find((clickStorage: IClickStorage) => clickStorage.team === decodeURIComponent(this.selectedTeam));
@@ -30,30 +31,36 @@ export class GameService {
     }
   }
 
+  /* get leaderboard from api */
   private getLeaderBoard(): void {
     this._data.getLeaderBoard().subscribe((leaderBoard: ILeaderBoard[]) => {
       this.leaderBoard.next(leaderBoard);
     });
   }
 
+  /* get my clicks from storage */
   private getClickStorage(): void {
     const clicks: string = localStorage.getItem('clicks');
     let model: IClickStorage[] = !clicks ? [] : JSON.parse(atob(clicks));
     this.myClicksStorage = model;
   }
 
+  /* find team by name */
   public findTeam(name: string): ILeaderBoard {
     return this.leaderBoard.getValue().find((leaderBoard: ILeaderBoard) => leaderBoard.team === name);
   }
 
+  /* add clicks for team */
   public addClick(): void {
     this.addTeamClick();
   }
 
+  /* just find team index in leaderboard property */
   public get findTeamIndex(): number {
     return this.leaderBoard.getValue().findIndex((leaderBoard: ILeaderBoard) => leaderBoard === this.findTeam(decodeURIComponent(this.selectedTeam)));
   }
 
+  /* add clicks as team */
   private addTeamClick(): void {
     const model: IClickRequest = {
       team: decodeURIComponent(this.selectedTeam),
@@ -76,10 +83,12 @@ export class GameService {
     });
   }
 
+  /* get my team clicks from local storage */
   private get findMyClicks(): IClickStorage {
     return this.myClicksStorage.find((clickStorage: IClickStorage) => clickStorage.team === decodeURIComponent(this.selectedTeam));
   }
 
+  /* add my clicks to storage */
   private addMyClick() {
     const myClicks: IClickStorage = this.findMyClicks;
     if (!myClicks) {

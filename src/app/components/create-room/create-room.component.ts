@@ -19,12 +19,14 @@ export class CreateRoomComponent implements OnInit {
     this.reactive();
   }
 
+  /* create empty form */
   private reactive(): void {
     this.createTeamForm = this._formBuilder.group({
       name: ['', Validators.required]
     });
   }
 
+  /* sumbit form and create new team */
   public submit(): void {
     if (this.createTeamForm.valid) {
       const { name } = this.createTeamForm.value;
