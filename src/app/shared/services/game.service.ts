@@ -2,7 +2,7 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { ILeaderBoard } from 'src/app/models/ileader-board';
 import { ApiConnectionsService } from './api-connections.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IClickStorage } from 'src/app/models/iclick-storage';
 import { IClick } from 'src/app/models/iclick';
 import { IClickRequest } from 'src/app/models/iclick-request';
@@ -60,7 +60,15 @@ export class GameService {
       session: ''
     };
     this._data.postClick(model).subscribe(() => {
-      this.leaderBoard.getValue()[this.findTeamIndex].clicks++;
+      if (this.findTeamIndex >= 0) {
+        this.leaderBoard.getValue()[this.findTeamIndex].clicks++;
+      } else {
+        this.leaderBoard.next([...this.leaderBoard.getValue(), {
+          order: this.leaderBoard.getValue().length,
+          team: this.selectedTeam,
+          clicks: 1
+        }]);
+      }
       this.addMyClick();
     });
   }

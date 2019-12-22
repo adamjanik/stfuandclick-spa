@@ -32,6 +32,6 @@ export class TeamDetailComponent implements OnInit, OnDestroy {
   }
 
   public click(): void {
-    this._game.addClick(this._game.selectedTeam);
+    this._game.addClick();
   }
 }

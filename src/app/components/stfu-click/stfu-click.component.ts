@@ -23,7 +23,7 @@ export class StfuClickComponent {
 
   public get teamClicks(): number {
     const team: ILeaderBoard = this._game.findTeam(decodeURIComponent(this.teamName));
-    return team ? team.clicks : 0;
+    return !team ? 0 : team.clicks;
   }
 
   public addMagicSpaceToNumber(number: number): string {
