@@ -1,4 +1,4 @@
-<app-layout [teamName]="teamName">
+<app-layout [teamName]="teamName" [tableItems]="myTeamChart" [highlighted]="_game.findTeamIndex >= 0 && highlighted">
     <div class="team-detail">
         <div class="box-title">
             <app-stfu-click (onClick)="click()" [teamName]="teamName"></app-stfu-click>

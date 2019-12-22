@@ -9,4 +9,5 @@ import { ILeaderBoard } from 'src/app/models/ileader-board';
 export class LayoutComponent {
   @Input() public tableItems: ILeaderBoard[] = null;
   @Input() public teamName: string = null;
+  @Input() public highlighted: number;
 }

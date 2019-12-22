@@ -4,7 +4,7 @@
     <app-quote *ngIf="!teamName"></app-quote>
     <section class="container">
         <ng-content></ng-content>
-        <app-team-chart [items]="tableItems"></app-team-chart>
+        <app-team-chart [items]="tableItems" [highlighted]="highlighted"></app-team-chart>
         <span class="hint">Want to be top? STFU and click!</span>
     </section>
     <app-footer></app-footer>

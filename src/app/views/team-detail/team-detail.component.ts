@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GameService } from 'src/app/shared/services/game.service';
+import { ILeaderBoard } from 'src/app/models/ileader-board';
 
 @Component({
   selector: 'app-team-detail',
@@ -10,6 +11,7 @@ import { GameService } from 'src/app/shared/services/game.service';
 })
 export class TeamDetailComponent implements OnInit, OnDestroy {
   private routeSubscription: Subscription;
+  public highlighted: number = 3;
 
   constructor(
     private _route: ActivatedRoute,
@@ -25,6 +27,19 @@ export class TeamDetailComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
     this._game.selectedTeam = null;
+  }
+
+  public get myTeamChart(): ILeaderBoard[] {
+    let startIndex: number = 0;
+    let endIndex: number = 7;
+    if (this._game.findTeamIndex >= 3) {
+      startIndex = this._game.findTeamIndex - 3;
+      endIndex = this._game.findTeamIndex + 4;
+      this.highlighted = 3;
+    } else {
+      this.highlighted = this._game.findTeamIndex;
+    }
+    return this._game.leaderBoard.getValue().slice(startIndex, endIndex);
   }
 
   public get teamName(): string {

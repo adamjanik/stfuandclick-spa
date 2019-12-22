@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TeamChartComponent {
   @Input() public items: ILeaderBoard[];
+  @Input() public highlighted: number;
 
   constructor(private _router: Router) { }
 

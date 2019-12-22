@@ -50,7 +50,7 @@ export class GameService {
     this.addTeamClick();
   }
 
-  private get findTeamIndex(): number {
+  public get findTeamIndex(): number {
     return this.leaderBoard.getValue().findIndex((leaderBoard: ILeaderBoard) => leaderBoard === this.findTeam(decodeURIComponent(this.selectedTeam)));
   }
 
@@ -62,6 +62,9 @@ export class GameService {
     this._data.postClick(model).subscribe((response: IClick) => {
       if (this.findTeamIndex >= 0) {
         this.leaderBoard.getValue()[this.findTeamIndex].clicks = response.team_clicks;
+        if (this.findTeamIndex > 0 && this.leaderBoard.getValue()[this.findTeamIndex].clicks > this.leaderBoard.getValue()[this.findTeamIndex - 1].clicks) {
+          this.getLeaderBoard();
+        }
       } else {
         this.leaderBoard.next([...this.leaderBoard.getValue(), {
           order: this.leaderBoard.getValue().length,
