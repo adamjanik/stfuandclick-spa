@@ -1,0 +1,63 @@
+@import '../../../styles.scss';
+$title-indentation: -30%;
+
+.leader-board {
+    .title-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.75rem;
+
+        .title {
+            position: relative;
+            z-index: 0;
+    
+            h2 {
+                color: #fff;
+                margin: 0;
+                font-size: medium;
+                background: $primary;
+                padding: 0.5rem 1rem;
+            }
+    
+            div {
+                position: absolute;
+                bottom: calc(#{$title-indentation} / 3 * 2);
+                width: calc(100% / 2.5);
+                background: darken($primary, 8%);
+                height: 100%;
+                z-index: -1;
+
+                &:before {
+                    top: 50%;
+                    border: solid transparent;
+                    content: " ";
+                    height: 0;
+                    width: 0;
+                    position: absolute;
+                    pointer-events: none;
+                    border-width: 20px;
+                    margin-top: -19px;
+                }
+    
+                &:first-of-type {
+                    left: $title-indentation;
+
+                    &:before {
+                        right: 20px;
+                        border-left-color: #fff;
+                    }
+                }
+    
+                &:last-of-type {
+                    right: $title-indentation;
+
+                    &:before {
+                        left: 20px;
+                        border-right-color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@import '../../../styles.scss';
+
+table {
+    width: 100%;
+    border-spacing: 0;
+
+    tr {
+        th {
+            text-align: left;
+            font-size: smaller;
+            color: rgba(#000, 0.25);
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+
+            &:last-of-type {
+                text-align: right;
+            }
+        }
+
+        td {
+            font-weight: bold;
+            padding: 0.5rem 0.75rem;
+
+            &:first-of-type,
+            &:last-of-type {
+                text-align: right;
+            }
+        }
+
+        &.table-line {
+            &:nth-child(even) {
+                background: lighten($primary, 42%);
+            }
+
+            &:nth-child(odd) {
+                background: lighten($primary, 38%);
+            }
+
+            &.active {
+                background: $primary;
+                color: #fff;
+                font-size: x-large;
+            }
+        }
+    }
+}
