@@ -37,8 +37,12 @@ export class TeamDetailComponent implements OnInit, OnDestroy {
       startIndex = this._game.findTeamIndex - 3;
       endIndex = this._game.findTeamIndex + 4;
       this.highlighted = 3;
-    } else {
+    } else if (this._game.findTeamIndex >= 0 && this._game.findTeamIndex < 3) {
       this.highlighted = this._game.findTeamIndex;
+    } else {
+      startIndex = this._game.leaderBoard.getValue().length - 7;
+      endIndex = this._game.leaderBoard.getValue().length;
+      this.highlighted = -1;
     }
     return this._game.leaderBoard.getValue().slice(startIndex, endIndex);
   }
