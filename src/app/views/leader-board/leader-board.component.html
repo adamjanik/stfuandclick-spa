@@ -1,6 +1,8 @@
-<app-layout>
+<app-layout [tableItems]="top10Chart">
     <div class="leader-board">
-        <app-create-room></app-create-room>
+        <div class="box-title">
+            <app-create-room></app-create-room>
+        </div>
         <div class="title-wrapper">
             <div class="title">
                 <div></div>
@@ -8,6 +10,5 @@
                 <div></div>
             </div>
         </div>
-        <app-team-chart [items]="top10Chart"></app-team-chart>
     </div>
 </app-layout>

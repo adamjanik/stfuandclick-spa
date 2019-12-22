@@ -16,17 +16,22 @@ export class TeamDetailComponent implements OnInit, OnDestroy {
     public _game: GameService
   ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.routeSubscription = this._route.params.subscribe((params: Params) => {
       this._game.selectedTeam = params['team'];
     });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
+    this._game.selectedTeam = null;
   }
 
-  get linkName() {
+  public get teamName(): string {
     return this._game.selectedTeam;
+  }
+
+  public click(): void {
+    this._game.addClick(this._game.selectedTeam);
   }
 }

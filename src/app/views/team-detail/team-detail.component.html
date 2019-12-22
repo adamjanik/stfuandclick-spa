@@ -1,3 +1,7 @@
-<app-layout [linkName]="linkName">
-    ...
+<app-layout [teamName]="teamName">
+    <div class="team-detail">
+        <div class="box-title">
+            <app-stfu-click (onClick)="click()" [teamName]="teamName"></app-stfu-click>
+        </div>
+    </div>
 </app-layout>

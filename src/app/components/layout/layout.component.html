@@ -1,9 +1,10 @@
 <main>
     <app-header></app-header>
-    <app-team-title *ngIf="linkName" [linkName]="linkName"></app-team-title>
-    <app-quote *ngIf="!linkName"></app-quote>
+    <app-team-title *ngIf="teamName" [teamName]="teamName"></app-team-title>
+    <app-quote *ngIf="!teamName"></app-quote>
     <section class="container">
         <ng-content></ng-content>
+        <app-team-chart [items]="tableItems"></app-team-chart>
         <span class="hint">Want to be top? STFU and click!</span>
     </section>
     <app-footer></app-footer>

@@ -1,1 +1,13 @@
-<p>stfu-click works!</p>
+<div class="stfu-click">
+    <button type="button" (click)="click()">CLICK!</button>
+    <div class="stats">
+        <div class="count">
+            <h3>Your clicks:</h3>
+            <span>{{ addMagicSpaceToNumber(myClicks) }}</span>
+        </div>
+        <div class="count">
+            <h3>Team clicks:</h3>
+            <span>{{ addMagicSpaceToNumber(teamClicks) }}</span>
+        </div>
+    </div>
+</div>

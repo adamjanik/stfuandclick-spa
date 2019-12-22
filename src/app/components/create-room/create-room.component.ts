@@ -8,27 +8,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-room.component.scss']
 })
 export class CreateRoomComponent implements OnInit {
-  createTeamForm: FormGroup;
+  public createTeamForm: FormGroup;
   
   constructor(
     private _formBuilder: FormBuilder,
     private _router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.reactive()
+  public ngOnInit(): void {
+    this.reactive();
   }
 
-  reactive() {
+  private reactive(): void {
     this.createTeamForm = this._formBuilder.group({
       name: ['', Validators.required]
     });
   }
 
-  submit() {
+  public submit(): void {
     if (this.createTeamForm.valid) {
       const { name } = this.createTeamForm.value;
-      this._router.navigate(['/', decodeURIComponent(name)]);
+      this._router.navigate(['/', encodeURIComponent(name)]);
     }
   }
 }

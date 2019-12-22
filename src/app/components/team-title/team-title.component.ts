@@ -6,13 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./team-title.component.scss']
 })
 export class TeamTitleComponent {
-  @Input() linkName: string;
+  @Input() private teamName: string;
 
-  get name(): string {
-    return encodeURIComponent(this.linkName);
+  public get name(): string {
+    return decodeURIComponent(this.teamName);
   }
 
-  get link(): string {
+  public get link(): string {
     return window.location.href;
   }
 }

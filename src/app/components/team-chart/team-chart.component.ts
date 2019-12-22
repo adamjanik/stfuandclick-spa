@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { GameService } from 'src/app/shared/services/game.service';
 import { ILeaderBoard } from 'src/app/models/ileader-board';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-chart',
@@ -8,5 +9,11 @@ import { ILeaderBoard } from 'src/app/models/ileader-board';
   styleUrls: ['./team-chart.component.scss']
 })
 export class TeamChartComponent {
-  @Input() items: ILeaderBoard[];
+  @Input() public items: ILeaderBoard[];
+
+  constructor(private _router: Router) { }
+
+  public openTeam(name: string): void {
+    this._router.navigate(['/', encodeURIComponent(name)]);
+  }
 }

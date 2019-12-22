@@ -18,7 +18,7 @@ export class ApiConnectionsService {
   /**
    * @param {string} target
    */
-  private createAddress = (target: string): string => `${environment.apiUrl}/${target}?timestamp=${~~(Date.now() / 1000)}`;
+  private createAddress: ((target: string) => string) = (target: string): string => `${environment.apiUrl}/${target}?timestamp=${~~(Date.now() / 1000)}`;
 
   getLeaderBoard(): Observable<ILeaderBoard[]> {
     let url = this.createAddress(this.urlLeaderBoard);
@@ -54,6 +54,11 @@ export class ApiConnectionsService {
     });
   }
 
+  /**
+   * @param {string} method
+   * @param {string} url
+   * @param {Object} parameters
+   */
   private processRequestWithParams(method: string, url: string, parameters: any): Observable<any> {
     return new Observable<any>(observer => {
       this._httpClient[method](url, parameters).subscribe((item: any) => {

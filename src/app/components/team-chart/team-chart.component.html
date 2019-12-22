@@ -4,7 +4,7 @@
         <th>Team</th>
         <th>Clicks</th>
     </tr>
-    <tr *ngFor="let item of items" class="table-line">
+    <tr *ngFor="let item of items" class="table-line" (click)="openTeam(item.team)">
         <td>{{ item.order }}</td>
         <td>{{ item.team }}</td>
         <td>{{ item.clicks }}</td>
