@@ -23,7 +23,7 @@ export class GameService {
 
   public get myClicks(): number {
     if (!!this.myClicksStorage && this.myClicksStorage.length > 0) {
-      const myClicksStorage: IClickStorage = this.myClicksStorage.find((clickStorage: IClickStorage) => clickStorage.team === this.selectedTeam);
+      const myClicksStorage: IClickStorage = this.myClicksStorage.find((clickStorage: IClickStorage) => clickStorage.team === decodeURIComponent(this.selectedTeam));
       return myClicksStorage ? myClicksStorage.count : 0;
     } else {
       return 0;
@@ -51,21 +51,21 @@ export class GameService {
   }
 
   private get findTeamIndex(): number {
-    return this.leaderBoard.getValue().findIndex((leaderBoard: ILeaderBoard) => leaderBoard === this.findTeam(this.selectedTeam));
+    return this.leaderBoard.getValue().findIndex((leaderBoard: ILeaderBoard) => leaderBoard === this.findTeam(decodeURIComponent(this.selectedTeam)));
   }
 
   private addTeamClick(): void {
     const model: IClickRequest = {
-      team: this.selectedTeam,
+      team: decodeURIComponent(this.selectedTeam),
       session: ''
     };
-    this._data.postClick(model).subscribe(() => {
+    this._data.postClick(model).subscribe((response: IClick) => {
       if (this.findTeamIndex >= 0) {
-        this.leaderBoard.getValue()[this.findTeamIndex].clicks++;
+        this.leaderBoard.getValue()[this.findTeamIndex].clicks = response.team_clicks;
       } else {
         this.leaderBoard.next([...this.leaderBoard.getValue(), {
           order: this.leaderBoard.getValue().length,
-          team: this.selectedTeam,
+          team: decodeURIComponent(this.selectedTeam),
           clicks: 1
         }]);
       }
@@ -74,7 +74,7 @@ export class GameService {
   }
 
   private get findMyClicks(): IClickStorage {
-    return this.myClicksStorage.find((clickStorage: IClickStorage) => clickStorage.team === this.selectedTeam);
+    return this.myClicksStorage.find((clickStorage: IClickStorage) => clickStorage.team === decodeURIComponent(this.selectedTeam));
   }
 
   private addMyClick() {
@@ -82,7 +82,7 @@ export class GameService {
     if (!myClicks) {
       this.myClicksStorage.push({
         count: 1,
-        team: this.selectedTeam
+        team: decodeURIComponent(this.selectedTeam)
       });
     } else {
       const index: number = this.myClicksStorage.findIndex((clickStorage: IClickStorage) => clickStorage.team === myClicks.team);

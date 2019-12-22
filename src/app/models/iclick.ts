@@ -1,4 +1,4 @@
 export interface IClick {
-    your_clicks: string;
-    team_clicks: string;
+    your_clicks: number;
+    team_clicks: number;
 }
