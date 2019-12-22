@@ -11,7 +11,9 @@ import { StfuClickComponent } from './components/stfu-click/stfu-click.component
 import { TeamChartComponent } from './components/team-chart/team-chart.component';
 import { LeaderBoardComponent } from './views/leader-board/leader-board.component';
 import { TeamDetailComponent } from './views/team-detail/team-detail.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuoteComponent } from './components/quote/quote.component';
+import { TeamTitleComponent } from './components/team-title/team-title.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,16 @@ import { TeamDetailComponent } from './views/team-detail/team-detail.component';
     LayoutComponent,
     CreateRoomComponent,
     StfuClickComponent,
-    TeamChartComponent
+    TeamChartComponent,
+    QuoteComponent,
+    TeamTitleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

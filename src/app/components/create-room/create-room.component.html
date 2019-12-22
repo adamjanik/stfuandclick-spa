@@ -1,3 +1,9 @@
 <div class="create-room">
-
+    <form [formGroup]="createTeamForm" (ngSubmit)="submit()" novalidate>
+        <div class="input-group">
+            <label for="name">Enter your team name:</label>
+            <input placeholder="Your mom" type="text" id="name" formControlName="name">
+        </div>
+        <button type="submit" [disabled]="!this.createTeamForm.valid">Click!</button>
+    </form >
 </div>

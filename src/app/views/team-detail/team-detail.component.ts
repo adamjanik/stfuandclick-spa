@@ -19,11 +19,14 @@ export class TeamDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeSubscription = this._route.params.subscribe((params: Params) => {
       this._game.selectedTeam = params['team'];
-      console.log(this._game.selectedTeam);
     });
   }
 
   ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
+  }
+
+  get linkName() {
+    return this._game.selectedTeam;
   }
 }

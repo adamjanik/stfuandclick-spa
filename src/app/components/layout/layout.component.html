@@ -1,5 +1,7 @@
 <main>
     <app-header></app-header>
+    <app-team-title *ngIf="linkName" [linkName]="linkName"></app-team-title>
+    <app-quote *ngIf="!linkName"></app-quote>
     <section class="container">
         <ng-content></ng-content>
         <span class="hint">Want to be top? STFU and click!</span>

@@ -1,0 +1,7 @@
+<div class="team-title">
+    <h2>Clicking for team <strong>{{ name }}</strong></h2>
+    <div class="pls-help">
+        <p>Too lazy to click? Let your pals click for you:</p>
+        <input [value]="link" #linkInput (click)="linkInput.select()" readonly>
+    </div>
+</div>

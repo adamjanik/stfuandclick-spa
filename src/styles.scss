@@ -1,5 +1,9 @@
 $primary: #2196f3;
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-size: 14px;
@@ -9,5 +13,53 @@ body {
 
     a {
         color: #03a9f4;
+    }
+
+    button {
+        background: $primary;
+        border: none;
+        border-radius: 6px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #fff;
+        font-size: x-large;
+        padding: 0.75rem 1.5rem;
+        outline: 0;
+        cursor: pointer;
+        transition: all 500ms;
+
+        &:hover {
+            background: darken($primary, 8%);
+        }
+
+        &:active {
+            background: darken($primary, 16%);
+            box-shadow: 0 0 1rem rgba($primary, 0.6);
+        }
+
+        &:disabled {
+            background: #ddd;
+            color: rgba(#000, 0.5);
+            text-decoration: line-through;
+        }
+    }
+
+    input {
+        padding: 0.625rem 0.75rem;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        margin-top: 0.5rem;
+        font-size: 12px;
+        outline: 0;
+        transition: all 500ms;
+
+        &:hover {
+            border-color: $primary;
+        }
+
+        &:focus {
+            border-color: darken($primary, 16%);
+            box-shadow: 0 0 0.75rem rgba($primary, 0.4);
+        }
     }
 }

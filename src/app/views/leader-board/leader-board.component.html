@@ -1,11 +1,13 @@
-<div class="leader-board">
-    <app-create-room></app-create-room>
-    <div class="title-wrapper">
-        <div class="title">
-            <div></div>
-            <h2>TOP 10 Clickers</h2>
-            <div></div>
+<app-layout>
+    <div class="leader-board">
+        <app-create-room></app-create-room>
+        <div class="title-wrapper">
+            <div class="title">
+                <div></div>
+                <h2>TOP 10 Clickers</h2>
+                <div></div>
+            </div>
         </div>
+        <app-team-chart [items]="top10Chart"></app-team-chart>
     </div>
-    <app-team-chart [items]="top10Chart"></app-team-chart>
-</div>
+</app-layout>
